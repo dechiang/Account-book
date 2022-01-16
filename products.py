@@ -13,3 +13,7 @@ while True:
 	# Quicker way: p = [name, price]
 	# Even quicker: products.append([name, price])
 print(products)
+
+for product in products:
+	print('the', product[0], 'has cost you', product[1])
+	
