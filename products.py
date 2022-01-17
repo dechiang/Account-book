@@ -16,4 +16,9 @@ print(products)
 
 for product in products:
 	print('the', product[0], 'has cost you', product[1])
-	
+
+# Write into file
+with open('products.csv', 'w') as f:
+	for x in products:
+		f.write(x[0] + ',' + x[1] + '\n')
+
