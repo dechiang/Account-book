@@ -1,13 +1,14 @@
-# products
+# account book application
 
 # read past saved csv file
 products = []
 with open('products.csv', 'r') as f:
 	for line in f:
+		if 'product, price' in line:
+			continue
 		name, price = line.strip().split(',')
 		products.append([name, price])
 print(products)
-
 
 # input new products & price you buy
 while True:
@@ -24,6 +25,7 @@ while True:
 	# Even quicker: products.append([name, price])
 print(products)
 
+# List out all purchase history
 for product in products:
 	print('the', product[0], 'has cost you', str(product[1]))
 
