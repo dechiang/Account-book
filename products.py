@@ -1,6 +1,15 @@
 # products
 
+# read past saved csv file
 products = []
+with open('products.csv', 'r') as f:
+	for line in f:
+		name, price = line.strip().split(',')
+		products.append([name, price])
+print(products)
+
+
+# input new products & price you buy
 while True:
 	name = input('Please enter the name of the product: ')
 	if name == 'q':
