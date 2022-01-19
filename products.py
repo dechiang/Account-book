@@ -6,6 +6,7 @@ while True:
 	if name == 'q':
 		break
 	price = input('How much is this product?: ')
+	price = int(price)
 	p = []
 	p.append(name)
 	p.append(price)
@@ -15,10 +16,11 @@ while True:
 print(products)
 
 for product in products:
-	print('the', product[0], 'has cost you', product[1])
+	print('the', product[0], 'has cost you', str(product[1]))
 
 # Write into file
 with open('products.csv', 'w') as f:
+	f.write('product, price\n')
 	for x in products:
-		f.write(x[0] + ',' + x[1] + '\n')
+		f.write(x[0] + ',' + str(x[1]) + '\n')
 
