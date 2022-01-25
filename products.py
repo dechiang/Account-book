@@ -1,5 +1,21 @@
 # account book application
 
+import os
+products = []
+
+if os.path.isfile('products.csv'): # Check if the file is the folder
+	print('The file has been found !!!')
+	# read past saved csv file
+	with open('products.csv', 'r') as f:
+		for line in f:
+			if 'product, price' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)
+else:
+	print('The file cannot be found...')
+
 # read past saved csv file
 products = []
 with open('products.csv', 'r') as f:
