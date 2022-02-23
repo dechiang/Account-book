@@ -5,19 +5,13 @@ import os
 # read past saved csv file
 def read_file(filename):
 	products = []
-	if os.path.isfile(filename): # Check if the file is the folder
-		print('The file has been found !!!')
-		# read past saved csv file
-		with open(filename, 'r') as f:
-			for line in f:
-				if 'product, price' in line:
-					continue
-				name, price = line.strip().split(',')
-				products.append([name, price])
-		print(products)
-	else:
-		print('The file cannot be found...')
-	return products
+	with open(filename, 'r') as f:
+		for line in f:
+			if 'product, price' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+		return products
 
 # input new products & price you buy
 def user_input(products):
@@ -48,7 +42,16 @@ def write_file(filename, products):
 		for x in products:
 			f.write(x[0] + ',' + str(x[1]) + '\n')
 
-products = read_file('products.csv')
-products = user_input(products)
-print_products(products)
-write_file('products.csv', products)
+def main():
+	filename = 'products.csv'
+	if os.path.isfile(filename): # Check if the file is the folder
+		print('The file has been found !!!')
+		products = read_file(filename)
+	else:
+		print('The file cannot be found...')
+
+	products = user_input(products)
+	print_products(products)
+	write_file('products.csv', products)
+
+main()
